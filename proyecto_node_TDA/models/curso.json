@@ -1,0 +1,30 @@
+[{
+    "id": 1,
+    "nombre": "Cálculo I",        
+    "descripcion": "Primer curso de la línea de matemáticas",
+    "intensidad": 9,    
+    "disponible": true,
+    "capacidad": 50,
+    "valor": 50000,
+    "duracion": 90
+},
+{
+    "id": 2,
+    "nombre": "NodeJS",
+    "descripcion": "Intorducción básica a NodeJS",
+    "intensidad": 4,    
+    "disponible": true,
+    "capacidad": 100,
+    "valor": 0,
+    "duracion": 32         
+},
+{
+    "id": 3,
+    "nombre": "Estructuras de Datos",
+    "descripcion": "Curso fundamental de programación y ciencias de la computación",
+    "intensidad": 5,    
+    "disponible": true,
+    "capacidad": 40,
+    "valor": 10000,
+    "duracion": 100         
+}]
