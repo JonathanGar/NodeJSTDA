@@ -10,8 +10,8 @@
             <label for="descripcion">* Descripción</label>
             <input type="text" name="descripcion" value="{{ curso.descripcion }}">
             <br>
-            <label for="valor">* Valor</label> COP   
-            <input type="number" name="valor" value="{{ curso.valor }}">
+            <label for="valor">* Valor</label> $   
+            <input type="number" name="valor" value="{{ curso.valor }}"> COP
             <br>
             <label for="valor">Modalidad</label>    
             <select name="modalidad" id="modalidad">
@@ -21,7 +21,7 @@
             </select>            
             <br>
             <label for="intensidad">Intensidad horaria</label>   
-            <input type="number" name="intensidad" value="{{ curso.intensidad }}">
+            <input type="number" name="intensidad" value="{{ curso.intensidad }}"> horas
             <br>
             <button type="submit">Crear</button>
         </form>

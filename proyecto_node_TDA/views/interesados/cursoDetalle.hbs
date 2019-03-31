@@ -1,0 +1,12 @@
+{{>header}}
+{{#if curso}}        
+    <div>
+        Nombre: {{curso.nombre}}<br>
+        Descripción: {{curso.descripcion}}<br>
+        Valor: $ {{curso.valor}} COP<br> 
+        {{#if curso.modalidad}}Modalidad: {{curso.modalidad}}<br> {{/if}}
+        {{#if curso.modalidad}}Intensidad horaria: {{curso.intensidad}} hora(s)<br> {{/if}}        
+    </div>
+{{/if}}        
+<a href="/interesados/ver-cursos">Regresar</a><br>
+{{>footer}}

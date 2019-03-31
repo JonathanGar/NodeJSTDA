@@ -10,6 +10,7 @@ require('./src/helpers');
 
 var indexRouter = require('./routes/index');
 var cursosRouter = require('./routes/cursos');
+var interesadosRouter = require('./routes/interesados');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 app.use('/', indexRouter);
 app.use('/cursos', cursosRouter);
+app.use('/interesados', interesadosRouter);
 
 /*app.get('/', (req, res) => {
   res.  
