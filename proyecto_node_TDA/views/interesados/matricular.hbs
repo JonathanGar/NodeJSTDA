@@ -1,0 +1,22 @@
+{{>header}}
+    <div>
+        {{#if curso}}
+            <div>
+                Nombre del curso: {{curso.nombre}}<br>
+                Descripción: {{curso.descripcion}}<br>
+                Valor: $ {{curso.valor}} COP<br> 
+                {{#if curso.modalidad}}Modalidad: {{curso.modalidad}}<br> {{/if}}
+                {{#if curso.modalidad}}Intensidad horaria: {{curso.intensidad}} hora(s)<br> {{/if}}
+            </div>
+            <br>
+            <form action="/interesados/matricular?curso_id={{ curso.id }}" method="POST">            
+                <label for="documento">Diligencie su número de documento</label>
+                <input type="number" name="documento">            
+                <br>            
+                <button type="submit">Matricular</button>
+            </form>
+        {{else}}
+            <a href="/interesados/ver-cursos">volver al listado</a>            
+        {{/if}}
+    </div>
+{{>footer}}

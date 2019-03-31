@@ -43,8 +43,7 @@ router.post('/crear', (req, res, next) => {
   }else if(newCurso.intensidad <= 0){
       description = "Ingrese una intensidad horaria mayor que cero";
       render(description, newCurso);
-  }else if(newCurso.nombre && newCurso.id && newCurso.valor && newCurso.descripcion){
-    console.log("2", newCurso);
+  }else if(newCurso.nombre && newCurso.id && newCurso.valor && newCurso.descripcion){    
     cursoService.crear(newCurso, (err, response)=>{
         if(err){
             description = err;

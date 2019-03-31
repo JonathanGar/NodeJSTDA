@@ -49,9 +49,9 @@ let obtenerPorId = (id, callback) => {
     try{
         let cursos = getCursos();        
         let curso = cursos.find((c)=>{
-            return c.id === id;
+            return c.disponible && c.id === id;
         });
-        console.log("reputisima", typeof(id), curso);
+        
         if(curso){
             callback(null, curso);
         }else{
@@ -66,5 +66,6 @@ let obtenerPorId = (id, callback) => {
 module.exports = {
     crear,
     obtener,
-    obtenerPorId
+    obtenerPorId,
+    getCursos
 }

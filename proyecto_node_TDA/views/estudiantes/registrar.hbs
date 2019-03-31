@@ -1,0 +1,19 @@
+{{>header}}
+    <p>
+        <form action="/interesados/registrar" method="POST">
+            <label for="nombre">* Nombre Completo</label>
+            <input type="text" name="nombre" value="{{ estudiante.nombre }}" required>
+            <br>
+            <label for="documento">* Documento (numérico, sin puntos, ni comas, ni espacios)</label>
+            <input type="number" name="documento" value="{{ estudiante.documento }}" required>
+            <br>
+            <label for="correo">* Correo</label>
+            <input type="email" name="correo" value="{{ estudiante.correo }}" required>
+            <br>
+            <label for="telefono">* Teléfono</label> $   
+            <input type="text" name="telefono" value="{{ estudiante.telefono }}" required> COP
+            <br>            
+            <button type="submit">Registrar</button>
+        </form>
+    </p>
+{{>footer}}
