@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var cursosController = require('../controllers/cursosController');
+var cursoService = require('../services/cursosService');
 
 router.get('/', (req, res, next) => {
   res.render('Cursos', {
@@ -17,39 +17,48 @@ router.get('/crear', (req, res, next) => {
 });
 
 router.post('/crear', (req, res, next) => {
-  let description;
-  let creado = false;
-  console.log("1", req.body.nombre, req.body.id, req.body.valor, req.body.descripcion);
-  if(req.body.nombre && req.body.id && req.body.valor && req.body.descripcion){
-    console.log("2");
-    let newCurso = {
-      nombre: req.body.nombre,
-      id: parseInt(req.body.id),
-      valor: parseFloat(req.body.valor),
-      descripcion: req.body.descripcion,
-      modalidad: req.body.modalidad,
-      intensidad: parseInt(req.body.intensidad),
-    }
-
-    if(cursosController.crear(newCurso)){
-      console.log("3");
-      description = "Curso creado exitosamente";
-      creado = true;      
-    }else{
-      console.log("4");
-      description = "Ocurrió un error al tratar de crear el curso";
-    }
-
-  }else{
-    console.log("5");
-    description = "Por favor revise los campos obligatorios";
-  }
+  let description;  
   
-  res.render('cursos/crear', {
-    h1: 'Creación de cursos',
-    description: description,
-    creado: creado
-  });
+  let render = (desc, curso, route='cursos/crear')=> {
+    res.render(route, {
+        h1: 'Creación de cursos',
+        description: desc,
+        curso: curso
+      });
+  };
+
+  let newCurso = {
+    "nombre": req.body.nombre,
+    "id": parseInt(req.body.id),
+    "valor": parseFloat(req.body.valor),
+    "descripcion": req.body.descripcion,
+    "modalidad": req.body.modalidad,
+    "intensidad": parseInt(req.body.intensidad),
+    "disponible": true
+  }
+
+  if(newCurso.valor <= 0){
+      description = "Ingrese un valor del curso mayor que cero";
+      render(description, newCurso);
+  }else if(newCurso.intensidad <= 0){
+      description = "Ingrese una intensidad horaria mayor que cero";
+      render(description, newCurso);
+  }else if(newCurso.nombre && newCurso.id && newCurso.valor && newCurso.descripcion){
+    console.log("2", newCurso);
+    cursoService.crear(newCurso, (err, response)=>{
+        if(err){
+            description = err;
+            render(description, newCurso);
+        }else{
+            description = response;
+            render(description, newCurso, 'cursos/creado');
+        }
+        
+    });
+  }else{    
+    description = "Por favor revise los campos obligatorios (*)";
+    render(description, newCurso);
+  }
 });
 
 module.exports = router;

@@ -2,26 +2,26 @@
     <p>
         <form action="/cursos/crear" method="POST">
             <label for="nombre">* Nombre Completo</label>
-            <input type="text" name="nombre">
+            <input type="text" name="nombre" value="{{ curso.nombre }}">
             <br>
             <label for="id">* ID del curso</label>
-            <input type="number" name="id">
+            <input type="number" name="id" value="{{ curso.id }}">
             <br>
             <label for="descripcion">* Descripción</label>
-            <input type="text" name="descripcion">
+            <input type="text" name="descripcion" value="{{ curso.descripcion }}">
             <br>
             <label for="valor">* Valor</label> COP   
-            <input type="number" name="valor">
+            <input type="number" name="valor" value="{{ curso.valor }}">
             <br>
             <label for="valor">Modalidad</label>    
             <select name="modalidad" id="modalidad">
                 <option value=""></option>    
-                <option value="virtual">Virtual</option>
-                <option value="presencial">Presencial</option>
+                <option value="virtual"{{#ifEquals curso.modalidad "virtual"}} selected{{/ifEquals}}>Virtual</option>
+                <option value="presencial"{{#ifEquals curso.modalidad "presencial"}} selected{{/ifEquals}}>Presencial</option>
             </select>            
             <br>
             <label for="intensidad">Intensidad horaria</label>   
-            <input type="number" name="intensidad">
+            <input type="number" name="intensidad" value="{{ curso.intensidad }}">
             <br>
             <button type="submit">Crear</button>
         </form>
